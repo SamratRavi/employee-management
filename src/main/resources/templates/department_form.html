@@ -5,6 +5,13 @@
 </head>
 <body class="container mt-4">
 <h2 th:text="${department.id == null ? 'Add Department' : 'Edit Department'}"></h2>
+
+<!-- Error Popup -->
+<div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+    <span th:text="${errorMessage}"></span>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
 <form th:action="@{/department/save}" th:object="${department}" method="post">
     <input type="hidden" th:field="*{id}"/>
     <div class="mb-3">

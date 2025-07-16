@@ -4,6 +4,8 @@ import com.demo.employee_management.entity.Employee;
 import com.demo.employee_management.entity.exception.ResourceNotFoundException;
 import com.demo.employee_management.service.DepartmentService;
 import com.demo.employee_management.service.EmployeeService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import java.util.List;
 
 @Controller
 public class EmployeeController {
+    private final Logger logger = LoggerFactory.getLogger(EmployeeController.class);
 
     @Autowired
     private EmployeeService empService;
@@ -29,6 +32,7 @@ public class EmployeeController {
 
     @GetMapping("/employee/add")
     public String addEmployeeForm(Model model) {
+        logger.info("Adding employee form");
         model.addAttribute("employee", new Employee());
         model.addAttribute("departments", deptService.getAllDepartments());
         return "employee_form";

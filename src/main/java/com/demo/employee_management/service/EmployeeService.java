@@ -22,6 +22,10 @@ public class EmployeeService {
         return empRepo.findById(id);
     }
 
+    public Optional<Employee> getEmployeeByEmail(String email) {
+        return empRepo.findByEmail(email);
+    }
+
     public Employee saveEmployee(Employee employee) {
         return empRepo.save(employee);
     }
