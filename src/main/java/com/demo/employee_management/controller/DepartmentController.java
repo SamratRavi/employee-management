@@ -34,9 +34,9 @@ public class DepartmentController {
     @PostMapping("/department/save")
     public String saveDepartment(@ModelAttribute Department department, Model model) {
         if (deptService.getDepartmentByName(department.getName()).isPresent()) {
-           /* model.addAttribute("errorMessage", "Department with this name already exists!");
-            return "department_form";*/
-            throw new ResourceNotFoundException("Department with this name already exists " );
+            model.addAttribute("errorMessage", "Department with this name already exists!");
+            return "department_form";
+            //throw new ResourceNotFoundException("Department with this name already exists " );
         }
         deptService.saveDepartment(department);
         return "redirect:/departments";
