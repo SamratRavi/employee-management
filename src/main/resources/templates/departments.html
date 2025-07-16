@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Departments</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body class="container mt-4">
+<h2>Departments</h2>
+<a class="btn btn-success mb-2" href="/department/add">Add Department</a>
+<a class="btn btn-secondary mb-2 ms-2" href="/employees">Manage Employees</a>
+<table class="table">
+    <tr><th>Name</th><th>Actions</th></tr>
+    <tr th:each="d: ${departments}">
+        <td th:text="${d.name}"></td>
+        <td>
+            <a class="btn btn-sm btn-warning" th:href="@{'/department/edit/' + ${d.id}}">Edit</a>
+            <a class="btn btn-sm btn-danger ms-2" th:href="@{'/department/delete/' + ${d.id}}"
+               onclick="return confirm('Delete?');">Delete</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

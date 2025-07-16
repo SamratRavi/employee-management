@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Department Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+</head>
+<body class="container mt-4">
+<h2 th:text="${department.id == null ? 'Add Department' : 'Edit Department'}"></h2>
+<form th:action="@{/department/save}" th:object="${department}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+    <div class="mb-3">
+        <label>Name</label>
+        <input class="form-control" th:field="*{name}" required/>
+    </div>
+    <button class="btn btn-primary" type="submit">Save</button>
+    <a class="btn btn-secondary ms-2" href="/departments">Cancel</a>
+</form>
+</body>
+</html>
