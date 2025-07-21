@@ -7,6 +7,9 @@
 <body class="d-flex align-items-center vh-100">
 <div class="container w-25">
     <h3>Login</h3>
+    <div th:if="${errorMessage}" class="error">
+        <p th:text="${errorMessage}"></p>
+    </div>
     <form th:action="@{/login}" method="post">
         <div class="mb-3">
             <input class="form-control" name="username" placeholder="Username"/>
